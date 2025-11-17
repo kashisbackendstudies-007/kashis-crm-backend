@@ -127,6 +127,8 @@ exports.login = async (req, res) => {
       data: {
         token,
         user: {
+          type:"admin",
+          role:"admin",
           id: admin._id,
           name: admin.name,
           email: admin.email,
@@ -193,10 +195,14 @@ exports.getMe = async (req, res) => {
     res.status(200).json({
       success: true,
       data: {
-        id: admin._id,
-        name: admin.name,
-        email: admin.email,
-        createdAt: admin.createdAt,
+        user: {
+          type: "admin",
+          role: "admin",
+          id: admin._id,
+          name: admin.name,
+          email: admin.email,
+          createdAt: admin.createdAt,
+        },
       },
     });
   } catch (error) {
@@ -210,3 +216,4 @@ exports.getMe = async (req, res) => {
     });
   }
 };
+
